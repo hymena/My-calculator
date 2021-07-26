@@ -146,6 +146,21 @@ def operation(st):
             total /= float(st)
         else:
             total /= int(st)
+    if st != "" and sign == 5:
+        if "." in st:
+            total //= float(st)
+        else:
+            total //= int(st)
+    if st != "" and sign == 6:
+        if "." in st:
+            total %= float(st)
+        else:
+            total %= int(st)
+    if st != "" and sign == 7:
+        if "." in st:
+            total **= float(st)
+        else:
+            total **= int(st)
 
 
 def click(p1, st):
@@ -211,6 +226,44 @@ def click(p1, st):
         sign = 4
         screen.setText(str(total))
 
+    if (160 <= p1.x <= 240) and (280 <= p1.y <= 350):
+        # 5 is stored for //
+        if sign is None:
+            if "." in st:
+                total = float(st)
+            else:
+                total = int(st)
+        else:
+            operation(st)
+        st = ""
+        sign = 5
+        screen.setText(str(total))
+
+    if (80 <= p1.x <= 160) and (280 <= p1.y <= 350):
+        # 6 is stored for %
+        if sign is None:
+            if "." in st:
+                total = float(st)
+            else:
+                total = int(st)
+        else:
+            operation(st)
+        st = ""
+        sign = 6
+        screen.setText(str(total))
+
+    if (0 <= p1.x <= 80) and (280 <= p1.y <= 350):
+        # 7 is stored for **
+        if sign is None:
+            if "." in st:
+                total = float(st)
+            else:
+                total = int(st)
+        else:
+            operation(st)
+        st = ""
+        sign = 7
+        screen.setText(str(total))
     # ------- Getting number clicks ------
     else:
         if (80 <= p1.x <= 160) and (0 <= p1.y <= 70):
